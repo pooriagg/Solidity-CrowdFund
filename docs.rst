@@ -26,10 +26,12 @@ Crowd Fund Smart Contract Document
     function unpledge(uint _id, uint _amount) external;
 
     function claim(uint _id);
+    
+    function cancel(uint _id) external;
 
     function refund(uint _id) external;
 
-    function userInfo(address _addr, uint _id) external view returns(uint;
+    function userInfo(address _addr, uint _id) external view returns(uint);
 
     function campaignInfo(uint _id) external view returns(Campaign memory);
   }
@@ -95,3 +97,98 @@ Parameters
 
 ------------------------------------------------------------------------------------------------
 
+claim the pledged funds
+========================
+
+.. code-block:: solidity
+  
+  function claim(uint _id);
+  
+campaign creator can claim all pledged funds to his/her/their campaign after ending the campaign.
+
+----------
+Parameters
+----------
+
+1. ``_id`` - ``uint256``: The id of the campaign.
+
+------------------------------------------------------------------------------------------------
+
+cancel the campaign
+======================
+
+.. code-block:: solidity
+
+  function cancel(uint _id) external;
+  
+campaign creator can cancel his/her/their created campaign before it ends.
+
+----------
+Parameters
+----------
+
+1. ``_id`` - ``uint256``: The id of the campaign.
+
+------------------------------------------------------------------------------------------------
+
+refund fund
+=============
+
+... code-block:: solidity
+  
+  function refund(uint _id) external;
+  
+User can refund their funds from canceled campaigns.
+
+----------
+Parameters
+----------
+
+1. ``_id`` - ``uint256``: The id of the canceled campaign.
+
+------------------------------------------------------------------------------------------------
+
+get user info
+================
+
+.. code-block:: solidity
+
+  function userInfo(address _addr, uint _id) external view returns(uint);
+  
+Will return the pledged amount of the address ``_addr`` to the campaign id ``_id``.
+
+----------
+Parameters
+----------
+
+1. ``_addr`` - ``adddress``: The address of the target user.
+2. ``_id`` - ``uint256``: The id of the campaign.
+
+----------
+Returns
+----------
+
+1. ``uint256``: The pledged amount in decimal.
+
+------------------------------------------------------------------------------------------------
+
+get camapign full info
+================
+
+.. code-block:: solidity
+
+  function campaignInfo(uint _id) external view returns(Campaign memory);
+  
+Will return the full information of the campaign id ``_id``.
+
+----------
+Parameters
+----------
+
+1. ``_id`` - ``uint256``: The id of the campaign.
+
+----------
+Returns
+----------
+
+1. ``Campaign`` - ``Campaign's struct``: The struct of the campaign.
