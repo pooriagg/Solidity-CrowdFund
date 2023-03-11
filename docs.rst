@@ -134,7 +134,7 @@ Parameters
 refund fund
 =============
 
-... code-block:: solidity
+.. code-block:: solidity
   
   function refund(uint _id) external;
   
